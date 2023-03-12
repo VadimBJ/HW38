@@ -6,7 +6,7 @@ public class Pet {
   }
 
   private final Kind kind;
-  private String name;
+  private final String name;
   private String birthDate;
   private double weight;
 
@@ -26,6 +26,30 @@ public class Pet {
     this.name = name;
     this.birthDate = birthDate;
     this.weight = weight;
+  }
+
+  public Kind getKind() {
+    return kind;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public double getWeight() {
+    return weight;
+  }
+
+  public String getBirthDate() {
+    return birthDate;
+  }
+
+  public void setWeight(double weight) {
+    this.weight = weight;
+  }
+
+  public void setBirthDate(String birthDate) {
+    this.birthDate = birthDate;
   }
 
   //  "turtle,кличка,вес,дата рождения"
