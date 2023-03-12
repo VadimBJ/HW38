@@ -5,7 +5,7 @@ public class Pet {
     TURTLE,
   }
 
-  private Kind kind;
+  private final Kind kind;
   private String name;
   private String birthDate;
   private double weight;
