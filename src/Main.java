@@ -9,6 +9,7 @@ public class Main {
     for (int i = 0; i < n; i++) {
       pets.add(Pet.parsePet(br.readLine()));
     }
+    System.out.println();
   }
 }
 //Pet dog = Pet.parsePet("dog,Lary");
@@ -16,7 +17,11 @@ public class Main {
 //Pet turtle = Pet.parsePet("turtle,Leonardo,2.3,12.10.2021");
 /*
 3
-dog,Lary
+dog,Larry
 cat,Kitty,3.5
 turtle,Leonardo,2.3,12.10.2021
+3
+dog,Lary
+cat,Kitty,3d.5
+turtle,Leonardo,2.3,12.10.2021,Kitty,3.5
 */

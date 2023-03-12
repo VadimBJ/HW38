@@ -21,7 +21,7 @@ public class Pet {
     this.weight = weight;
   }
 
-  private Pet(String kind, String name,  double weight,String birthDate) {
+  private Pet(String kind, String name, double weight, String birthDate) {
     this.kind = Kind.valueOf(kind);
     this.name = name;
     this.birthDate = birthDate;
@@ -31,25 +31,30 @@ public class Pet {
   //  "turtle,кличка,вес,дата рождения"
   public static Pet parsePet(String line) {
     String[] lines = line.split(",", 4);
+    if (lines.length < 2) {
+      throw new IllegalArgumentException("Wrong line: " + line);
+    }
     String kind = lines[0].toUpperCase();
     String name = lines[1];
     double weight;
-    switch (lines.length) {
-      case 2 -> {
-        return new Pet(kind, name);
+    try {
+      switch (lines.length) {
+        case 2 -> {
+          return new Pet(kind, name);
+        }
+        case 3 -> {
+          weight = Double.parseDouble(lines[2]);
+          return new Pet(kind, name, weight);
+        }
+        case 4 -> {
+          weight = Double.parseDouble(lines[2]);
+          String birthDate = lines[3];
+          return new Pet(kind, name, weight, birthDate);
+        }
       }
-      case 3 -> {
-        weight = Double.parseDouble(lines[2]);
-        return new Pet(kind, name, weight);
-      }
-      case 4 -> {
-        weight = Double.parseDouble(lines[2]);
-        String birthDate = lines[3];
-        return new Pet(kind, name, weight, birthDate);
-      }
-      default -> throw new IllegalArgumentException("Wrong line: " + line);
+    } catch (NumberFormatException e) {
+      System.err.println("Wrong weight: " + e.getMessage());
     }
-
-
+    return new Pet(kind, name);
   }
 }
