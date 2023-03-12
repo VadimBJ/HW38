@@ -1,6 +1,11 @@
 import java.io.*;
 import java.util.*;
-
+/*
+3
+dog,Larry
+cat,Kitty,3.5
+turtle,Leonardo,2.3,12.10.2021
+*/
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -9,19 +14,15 @@ public class Main {
     for (int i = 0; i < n; i++) {
       pets.add(Pet.parsePet(br.readLine()));
     }
-    System.out.println();
+    System.out.println("\nYour pets:");
+    for (Pet pet : pets) {
+      System.out.printf("\u001B[34m %n%s %s%n\u001B[0m", pet.getKind(), pet.getName());
+      if (pet.getWeight() != 0) {
+        System.out.println(" Weighs: " + pet.getWeight());
+      }
+      if (pet.getBirthDate() != null) {
+        System.out.println(" Born on: " + pet.getBirthDate());
+      }
+    }
   }
 }
-//Pet dog = Pet.parsePet("dog,Lary");
-//Pet cat = Pet.parsePet("cat,Kitty,3.5");
-//Pet turtle = Pet.parsePet("turtle,Leonardo,2.3,12.10.2021");
-/*
-3
-dog,Larry
-cat,Kitty,3.5
-turtle,Leonardo,2.3,12.10.2021
-3
-dog,Lary
-cat,Kitty,3d.5
-turtle,Leonardo,2.3,12.10.2021,Kitty,3.5
-*/
